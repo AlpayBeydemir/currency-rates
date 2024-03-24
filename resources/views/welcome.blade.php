@@ -25,11 +25,11 @@
                 <div class="col-md-4">
                     <div class="card currency-card">
                         <div class="card-header">
-                            {{ $currency }}
+                            {{ $currency ?? '' }}
                         </div>
                         <div class="card-body">
-                            <h5 class="card-title">{{ $rate->full_name }}</h5>
-                            <p class="card-text">Fiyat: {{ $rate->price }}</p>
+                            <h5 class="card-title">{{ $rate->full_name ?? '' }}</h5>
+                            <p class="card-text">Fiyat: {{ $rate->price ?? '' }}</p>
                         </div>
                     </div>
                 </div>
@@ -41,11 +41,11 @@
             <div class="col-md-4">
                 <div class="card currency-card">
                     <div class="card-header">
-                        {{ $cheapestCurrency->short_code }}
+                        {{ $cheapestCurrency->short_code ?? '' }}
                     </div>
                     <div class="card-body">
-                        <h5 class="card-title">{{ $cheapestCurrency->full_name }}</h5>
-                        <p class="card-text">Fiyat: {{ $cheapestCurrency->price }}</p>
+                        <h5 class="card-title">{{ $cheapestCurrency->full_name ?? '' }}</h5>
+                        <p class="card-text">Fiyat: {{ $cheapestCurrency->price ?? '' }}</p>
                     </div>
                 </div>
             </div>

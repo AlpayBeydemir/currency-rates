@@ -10,8 +10,7 @@ class CurrencyRateController extends Controller
     public function index()
     {
         $title = 'Cheapest Currencies';
-        $keys = CurrencyRatesModel::get()->pluck('short_code')->toArray();
-        $currencies = array_unique($keys);
+        $currencies = CurrencyRatesModel::get()->pluck('short_code')->unique();
 
         $cheapestRates = collect($currencies)->mapWithKeys(function ($currency) {
             $cheapestRate = CurrencyRatesModel::where('short_code', $currency)->orderBy('price', 'ASC')->first();
