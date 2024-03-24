@@ -3,8 +3,8 @@
 namespace App\Console\Commands;
 
 use App\Models\CurrencyRatesModel;
-use App\Services\Api1CurrencyRateProvider;
-use App\Services\Api2CurrencyRateProvider;
+use App\Services\Currency\Api1CurrencyRateServices;
+use App\Services\Currency\Api2CurrencyRateServices;
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\Log;
 
@@ -31,17 +31,16 @@ class FetchCurrencyRates extends Command
     {
         try {
             $providers = [
-                new Api1CurrencyRateProvider(),
-                new Api2CurrencyRateProvider(),
+                (new Api1CurrencyRateServices())->setUrl(config('constant.CURRENCY_API_URL_1')),
+                (new Api2CurrencyRateServices())->setUrl(config('constant.CURRENCY_API_URL_2')),
             ];
 
             foreach ($providers as $provider) {
 
-                $rates = $provider->getRates();
+                $rates = $provider->getRates()->normalizeData();
                 $providerUrl = $provider->getUrl();
-                $normalizedData = $provider->normalizeData($rates);
 
-                foreach ($normalizedData as $data) {
+                foreach ($rates as $data) {
 
                     $currency_rate = new CurrencyRatesModel();
 

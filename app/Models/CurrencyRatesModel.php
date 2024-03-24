@@ -9,5 +9,11 @@ class CurrencyRatesModel extends Model
 {
     use HasFactory;
     protected $table = 'currency_rates';
-    protected $guarded = [];
+    protected $fillable = [
+        'provider_url',
+        'symbol',
+        'short_code',
+        'full_name',
+        'price'
+    ];
 }
