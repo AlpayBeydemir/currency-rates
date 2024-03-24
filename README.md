@@ -1,6 +1,6 @@
 # Study Case Currency Rates
 
-Local de çalışılan database adı: study-case
+Local de çalışılan database adı: study-case.
 'currency_rates' tablosunun çalışabilmesi için konsol'da php artisan migrate komutu çalıştırılmalıdır.
  
 Projeyi çalıştırabilmek için lütfen aşağıdaki kodları .env dosyanıza ekleyin.
